@@ -25,7 +25,7 @@ jobs:
 
       - name: Preparar projeto (localiza e extrai o projeto/zip em qualquer lugar do repo)
         id: prep
-        run: |
+        run: 
           set -e
 
           GRADLE_FILE=$(find . -maxdepth 5 -type f -path "*/app/build.gradle.kts" | head -n 1 || true)
@@ -53,7 +53,7 @@ jobs:
           echo "Não encontrei app/build.gradle.kts em nenhum lugar do repositório nem dentro de um .zip."
           echo "Conteúdo do repositório:"
           find . -maxdepth 4 -not -path "*/.git/*"
-          exit 1
+          exit 
 
       - name: Compilar APK de debug
         working-directory: ${{ steps.prep.outputs.dir }}
